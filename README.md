@@ -7,7 +7,8 @@ This is intended to be developed within 1-2 hours
 
 Setup
 -----
-* `git clone git@github.com:mediamanDE/full-stack-coding-challenge.git && cd full-stack-coding-challenge`
+* `git clone git@github.com:mediamanDE/full-stack-coding-challenge.git`
+* `cd full-stack-coding-challenge`
 
 
 Deliverables

@@ -28,7 +28,7 @@ Project description
 This application serves the purpose of exposing a JSON API to be consumed by a frontend client for ordering pizza.
 
 The following endpoints should return a JSON response:
-* POST `/api/orders` (just returns posted order)
+* POST `/api/orders` (just returns posted order, no persistance)
 * GET `/api/pizzas` (list of pizzas; see './backend/example-pizzas.json')
 
 Optional:
@@ -41,4 +41,5 @@ The following entities should be created (including proper relations):
 * *order item* - has a pizza and quantity
 
 The following endpoints should return a JSON response:
-*  GET `/api/orders` (list of orders)
+* POST `/api/orders` (persist to database)
+* GET `/api/orders` (list of orders)
