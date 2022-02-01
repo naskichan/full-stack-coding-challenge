@@ -32,7 +32,7 @@ The following endpoints should return a JSON response:
 * GET `/api/pizzas` (list of pizzas; see './backend/example-pizzas.json')
 
 Optional:
-* MySQL Setup with docker-compose
+* MySQL Setup with docker-compose (https://hub.docker.com/_/mysql)
 
 The following entities should be created (including proper relations):
 
