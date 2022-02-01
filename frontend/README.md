@@ -11,6 +11,7 @@ Prerequisites
 
 Coding Language:
 * Javascript/Typescript (framework of your choice)
+
 * You can use any additional libraries you want.
 
 
@@ -25,7 +26,7 @@ First of all we'll display the list of pizzas with ingredients and prices. Data 
 
 When the user chooses something from the list the order summary will update dynamically.
 
-There will be a button to confirm the order. An ajax call will be performed to `/api/order` and the result will be displayed as a message like this: "Your order is confirmed. Order summary: ...".
+There will be a button to confirm the order. An ajax call (POST) will be performed to `/api/orders` and the result will be displayed as a message like this: "Your order is confirmed. Order summary: ...".
 
 Optional:
-* Show all orders
+* Show all orders. Ajax call (GET) to `/api/orders`
