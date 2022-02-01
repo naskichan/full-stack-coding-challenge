@@ -1,8 +1,6 @@
 Frontend
 ========
 
-To better assess a candidates development skills, we would like to provide the following challenge. This is intendend to be developed within an hour of time.
-
 Prerequisites
 -------------
 
