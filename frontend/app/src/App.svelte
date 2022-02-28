@@ -1,30 +1,27 @@
 <script>
-	export let name;
+	async function fetchData() {
+		const pizzas = await fetch('http://localhost:3000/pizzas')
+		.then((res) => res.json())
+		return pizzas
+	}
+	let promise = fetchData()
+	function handleClick() {
+		promise = fetchData()
+	}
+
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>Hungry? Want to eat one of our pizzas? Take a look!</h1>
+	{#await promise}
+		<p>Fetching server data</p>
+	{:then pizzas} 
+	{#each pizzas as pizza}
+		{pizza.name}
+	{/each}
+	{/await}
+	<button on:click={handleClick}>Hello</button>
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
