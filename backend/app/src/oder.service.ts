@@ -32,13 +32,13 @@ export class OrderService {
     });
   }
 
-  async createUser(data: Prisma.OrderCreateInput): Promise<Order> {
+  async createOrder(data: Prisma.OrderCreateInput): Promise<Order> {
     return this.prisma.order.create({
       data,
     });
   }
 
-  async updateUser(params: {
+  async updateOrder(params: {
     where: Prisma.OrderWhereUniqueInput;
     data: Prisma.OrderUpdateInput;
   }): Promise<Order> {
@@ -49,7 +49,7 @@ export class OrderService {
     });
   }
 
-  async deleteUser(where: Prisma.OrderWhereUniqueInput): Promise<Order> {
+  async deleteOrder(where: Prisma.OrderWhereUniqueInput): Promise<Order> {
     return this.prisma.order.delete({
       where,
     });
