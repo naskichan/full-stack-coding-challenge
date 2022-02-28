@@ -10,7 +10,11 @@ export class OrderService {
   constructor(private prisma: PrismaService) {}
 
   async getAll() {
-    return this.prisma.order.findMany()
+    return this.prisma.order.findMany({
+      include: {
+        orderItems: true,
+      },
+    })
   }
 
   async createOrder(data: Prisma.OrderCreateInput): Promise<Order> {
