@@ -1,11 +1,20 @@
-import { orders } from './data.mock';
+import { orders, pizzas } from './data.mock';
 import { Order } from './interfaces/order.interface';
 import { Injectable } from '@nestjs/common';
 import { OrderItemDTO } from './interfaces/orderItem.dto';
+import { Pizza } from './interfaces/pizza.interface';
 
 @Injectable()
 export class AppService {
   ordersData = orders;
+  pizzaData = pizzas;
+
+  getPizzas(): Pizza[] {
+    return this.pizzaData;
+  }
+  getPizza(id: number): Pizza {
+    return this.pizzaData[id];
+  }
   addOrder(orderItems: OrderItemDTO[]) {
     return this.ordersData[
       this.ordersData.push({ orderItems: orderItems }) - 1

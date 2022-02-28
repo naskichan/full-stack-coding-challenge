@@ -10,6 +10,7 @@ import { AppService } from './app.service';
 import { Order } from './interfaces/order.interface';
 import { OrderItemDTO } from './interfaces/orderItem.dto';
 import { arrayOf, objectOf, primitives } from '@altostra/type-validations';
+import { Pizza } from './interfaces/pizza.interface';
 
 @Controller()
 export class AppController {
@@ -26,6 +27,10 @@ export class AppController {
       throw new HttpException('Invalid input', HttpStatus.BAD_REQUEST);
     }
     return this.appService.addOrder(orderItems);
+  }
+  @Get('/pizzas')
+  getPizzas(): Pizza[] {
+    return this.appService.getPizzas();
   }
 }
 
