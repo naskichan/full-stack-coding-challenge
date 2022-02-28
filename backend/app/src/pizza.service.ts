@@ -18,28 +18,5 @@ export class PizzaService {
   async getAll() {
     return await this.prisma.pizza.findMany();
   }
-
-  async createPizza(data: Prisma.PizzaCreateInput): Promise<Pizza> {
-    return this.prisma.pizza.create({
-      data,
-    });
-  }
-
-  async updatePizza(params: {
-    where: Prisma.PizzaWhereUniqueInput;
-    data: Prisma.PizzaUpdateInput;
-  }): Promise<Pizza> {
-    const { where, data } = params;
-    return this.prisma.pizza.update({
-      data,
-      where,
-    });
-  }
-
-  async deletePizza(where: Prisma.PizzaWhereUniqueInput): Promise<Pizza> {
-    return this.prisma.pizza.delete({
-      where,
-    });
-  }
-
+  
 }
