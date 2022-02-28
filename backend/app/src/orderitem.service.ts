@@ -15,22 +15,6 @@ export class OrderItemService {
     });
   }
 
-  async orderItems(params: {
-    skip?: number;
-    take?: number;
-    cursor?: Prisma.OrderItemWhereUniqueInput;
-    where?: Prisma.OrderItemWhereInput;
-    orderBy?: Prisma.OrderItemOrderByWithRelationInput;
-  }): Promise<OrderItem[]> {
-    const { skip, take, cursor, where, orderBy } = params;
-    return this.prisma.orderItem.findMany({
-      skip,
-      take,
-      cursor,
-      where,
-      orderBy,
-    });
-  }
 
   async createOrderItem(data: Prisma.OrderItemCreateInput): Promise<OrderItem> {
     return this.prisma.orderItem.create({
