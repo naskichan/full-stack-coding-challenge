@@ -17,6 +17,11 @@
       "strictBindCallApply": false,
       "forceConsistentCasingInFileNames": false,
       "noFallthroughCasesInSwitch": false
-    }
+    },
+    "exclude": [
+      "node_modules",
+      "public",
+      "frontend/app/node_modules"
+    ]
   }
   
