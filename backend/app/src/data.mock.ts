@@ -2,27 +2,37 @@ export const pizzas = [
   {
     name: 'Margherita',
     price: 5,
-    ingredients: ['tomato', 'mozzarella'],
+    ingredients: [{ name: 'tomato' }, { name: 'mozzarella' }],
   },
   {
     name: 'Bufala',
     price: 6,
-    ingredients: ['tomato', 'mozarella di bufala'],
+    ingredients: [{ name: 'tomato' }, { name: 'mozarella di bufala' }],
   },
   {
     name: 'Romana',
     price: 5,
-    ingredients: ['tomato', 'mozzarella', 'anchovies', 'oregano', 'oil'],
+    ingredients: [
+      { name: 'tomato' },
+      { name: 'mozzarella' },
+      { name: 'anchovies' },
+      { name: 'oregano' },
+      { name: 'oil' },
+    ],
   },
   {
     name: 'Diavola',
     price: 7.5,
-    ingredients: ['tomato', 'mozzarella', 'spicy salami'],
+    ingredients: [
+      { name: 'tomato' },
+      { name: 'mozzarella' },
+      { name: 'spicy salami' },
+    ],
   },
   {
     name: 'Pizza Bianca',
     price: 5,
-    ingredients: ['mozzarella', 'oregano'],
+    ingredients: [{ name: 'mozzarella' }, { name: 'oregano' }],
   },
 ];
 export const ingredients = [];
