@@ -1,9 +1,10 @@
 <script>
 //
+    
     export let props;
 </script>
 
-<div class='pizza'>
+<div class='pizza' on:click>
     <div class='topwrapper'>
         <p>{props.name}</p>
         <p>{props.price}$</p>
@@ -48,6 +49,7 @@
         padding: 1rem;
         margin: 1rem;
         background-color: #3A3A42;
+        cursor: pointer;
         
     }
     .pizza:hover {
