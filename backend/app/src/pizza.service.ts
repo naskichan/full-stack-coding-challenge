@@ -15,21 +15,8 @@ export class PizzaService {
     });
   }
 
-  async pizzas(params: {
-    skip?: number;
-    take?: number;
-    cursor?: Prisma.PizzaWhereUniqueInput;
-    where?: Prisma.PizzaWhereInput;
-    orderBy?: Prisma.PizzaOrderByWithRelationInput;
-  }): Promise<Pizza[]> {
-    const { skip, take, cursor, where, orderBy } = params;
-    return this.prisma.pizza.findMany({
-      skip,
-      take,
-      cursor,
-      where,
-      orderBy,
-    });
+  async getAll() {
+    return await this.prisma.pizza.findMany();
   }
 
   async createPizza(data: Prisma.PizzaCreateInput): Promise<Pizza> {
