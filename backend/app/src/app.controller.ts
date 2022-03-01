@@ -23,6 +23,7 @@ export class AppController {
 
   @Post('/orders')
   addOrder(@Body() orderItems: OrderItemDTO[]): Order {
+    console.log(orderItems);
     if (!isOrderDTOArray(orderItems)) {
       throw new HttpException('Invalid input', HttpStatus.BAD_REQUEST);
     }
