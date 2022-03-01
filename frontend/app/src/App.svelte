@@ -13,8 +13,7 @@
 		if(ordering) {
 			orderedPizzas = [...orderedPizzas, payload.pizza]
 		} else {
-			console.log(payload)
-			orderedPizzas = orderedPizzas.filter((value) => {value.name !== payload.pizza.name})
+			orderedPizzas = orderedPizzas.filter(value => value.name !== payload.pizza.name)
 		}
 	}
 
