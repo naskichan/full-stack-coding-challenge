@@ -2,11 +2,12 @@
 //
     
     export let props;
+    export let count;
 </script>
 
 <div class='pizza' on:click>
     <div class='topwrapper'>
-        <p>{props.name}</p>
+        <p>{count}x {props.name}</p>
         <p>{props.price}$</p>
     </div>
     <img src='https://source.unsplash.com/random/?pizza' alt='pizza' />
