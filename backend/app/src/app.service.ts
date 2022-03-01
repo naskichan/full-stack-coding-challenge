@@ -12,9 +12,6 @@ export class AppService {
   getPizzas(): Pizza[] {
     return this.pizzaData;
   }
-  getPizza(id: number): Pizza {
-    return this.pizzaData[id];
-  }
   addOrder(orderItems: OrderItemDTO[]) {
     return this.ordersData[
       this.ordersData.push({ orderItems: orderItems }) - 1
