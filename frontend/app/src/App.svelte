@@ -6,15 +6,16 @@
 		return pizzas
 	}
 	let promise = fetchData()
-	let orderedPizzas = []
+	let orderItems = []
 
 	function handleClick(ordering, payload) {
-		console.log('was clicked')
-		if(ordering) {
-			orderedPizzas = [...orderedPizzas, payload.pizza]
-		} else {
-			orderedPizzas = orderedPizzas.filter(value => value.name !== payload.pizza.name)
-		}
+		ordering ?
+			orderItems = [...orderItems, payload.pizza] :
+			orderItems = orderItems.filter(value => value.name !== payload.pizza.name)
+	}
+
+	function onlyUnique(value, index, self) {
+  		return self.indexOf(value) === index;
 	}
 
 </script>
@@ -26,8 +27,9 @@
 		{:then pizzas} 
 			<div class='pizzas'>
 				<h2>Your order </h2>
-				{#each orderedPizzas as pizza, count}
+				{#each orderItems.filter(onlyUnique) as pizza}
 					<Pizza props={pizza} on:click={() => handleClick(false, {pizza})}/>
+						{orderItems.filter(el => el.name == pizza.name).length}
 				{/each}
 			</div>
 			<div class='pizzas'>
