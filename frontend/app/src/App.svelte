@@ -1,4 +1,5 @@
 <script>
+
 	import Pizza from './components/Pizza.svelte'
 	async function fetchData() {
 		const pizzas = await fetch('http://localhost:3000/pizzas')
@@ -18,6 +19,20 @@
 	function calculatePrice() {
 		price = orderItems.map(el => el.price).reduce((p, c) => p + c, 0)
 	}
+	async function submitOrder() {
+		let data = orderItems.filter(onlyUnique).map(el => ({"pizzaId": el.id, "count": orderItems.filter(obj => obj.name === el.name).length}))
+		console.log(JSON.stringify(data))
+		const response = await fetch('http://localhost:3000/orders', {
+			method: 'POST',
+			mode: 'no-cors',
+			cache: 'no-cache',
+			credentials: 'same-origin',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+		}).catch(err => console.dir(err))
+	}
 	
 	function onlyUnique(value, index, self) {
   		return self.indexOf(value) === index;
@@ -34,6 +49,7 @@
 				<div class='info'>
 					<h2>Your order: </h2>
 					<h2>Total price: {price}$</h2>
+					<button on:click={submitOrder}>Submit</button>
 				</div>
 				{#each orderItems.filter(onlyUnique) as pizza}
 					<Pizza props={pizza} count={orderItems.filter(el => el.name == pizza.name).length} on:click={() => handleClick(false, {pizza})}/>
