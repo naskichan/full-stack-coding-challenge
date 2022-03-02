@@ -1,9 +1,10 @@
 <script>
 
 	import Pizza from './components/Pizza.svelte'
+	import axios from 'axios'
 	async function fetchData() {
-		const pizzas = await fetch('http://localhost:3000/pizzas')
-		.then((res) => res.json())
+		const pizzas = await axios.get('http://localhost:3000/pizzas')
+		.then((res) => res.data)
 		return pizzas
 	}
 	let promise = fetchData()
@@ -22,16 +23,7 @@
 	async function submitOrder() {
 		let data = orderItems.filter(onlyUnique).map(el => ({"pizzaId": el.id, "count": orderItems.filter(obj => obj.name === el.name).length}))
 		console.log(JSON.stringify(data))
-		const response = await fetch('http://localhost:3000/orders', {
-			method: 'POST',
-			mode: 'no-cors',
-			cache: 'no-cache',
-			credentials: 'same-origin',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(data)
-		}).catch(err => console.dir(err))
+		const response = await axios.post('http://localhost:3000/orders', data).then(res => alert("Your order has been successful. "+JSON.stringify(res.data))).catch(err => alert("There has been a problem, please try again later"))
 	}
 	
 	function onlyUnique(value, index, self) {
@@ -45,7 +37,7 @@
 		{#await promise}
 			<p>Fetching server data</p>
 		{:then pizzas} 
-			<div class='pizzas'>
+			<div class='section'>
 				<div class='info'>
 					<h2>Your order: </h2>
 					<h2>Total price: {price}$</h2>
@@ -57,7 +49,7 @@
 					{/each}
 				</div>
 			</div>
-			<div class='pizzas'>
+			<div class='section'>
 				<h2>Explore our menu</h2>
 				<div class='items'>
 					{#each pizzas as pizza}
@@ -69,7 +61,7 @@
 	</center>
 
 <style>
-	.pizzas {
+	.section {
 		display: flex;
 		width: 60%;
 		margin: 5rem;
