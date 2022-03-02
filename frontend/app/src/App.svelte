@@ -51,15 +51,19 @@
 					<h2>Total price: {price}$</h2>
 					<button on:click={submitOrder}>Submit</button>
 				</div>
-				{#each orderItems.filter(onlyUnique) as pizza}
-					<Pizza props={pizza} count={orderItems.filter(el => el.name == pizza.name).length} on:click={() => handleClick(false, {pizza})}/>
-				{/each}
+				<div class='items'>
+					{#each orderItems.filter(onlyUnique) as pizza}
+						<Pizza props={pizza} count={orderItems.filter(el => el.name == pizza.name).length} on:click={() => handleClick(false, {pizza})}/>
+					{/each}
+				</div>
 			</div>
 			<div class='pizzas'>
 				<h2>Explore our menu</h2>
-				{#each pizzas as pizza}
-					<Pizza props={pizza} count=1 on:click={() => handleClick(true, {pizza})}/>
-				{/each}
+				<div class='items'>
+					{#each pizzas as pizza}
+						<Pizza props={pizza} count=1 on:click={() => handleClick(true, {pizza})}/>
+					{/each}
+				</div>
 			</div>
 		{/await}
 	</center>
@@ -76,6 +80,11 @@
 	}
 	.info {
 		text-align: left;
+	}
+	.items {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
 	}
 	:global(body) {
 		background-color: #444451;
