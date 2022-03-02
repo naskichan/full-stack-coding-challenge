@@ -27,7 +27,9 @@
 	async function submitOrder() {
 		let data = orderItems.filter(onlyUnique).map(el => ({"pizzaId": el.id, "count": orderItems.filter(obj => obj.name === el.name).length}))
 		console.log(JSON.stringify(data))
-		const response = await axios.post('http://localhost:3000/orders', data).then(res => alert("Your order has been successful. "+JSON.stringify(res.data))).catch(err => alert("There has been a problem, please try again later"))
+		const response = await axios.post('http://localhost:3000/orders', data)
+		.then(res => alert("Your order has been successful. "+JSON.stringify(res.data)))
+		.catch(err => alert("There has been a problem, please try again later"))
 	}
 	
 	function onlyUnique(value, index, self) {
